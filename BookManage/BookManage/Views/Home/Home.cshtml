@@ -1,0 +1,37 @@
+﻿@using BookManage.Models
+@model List<Book>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/ContentBook.css" rel="stylesheet" />
+<div class="title">
+
+    <h6>Featured Products</h6>
+    <hr>
+</div>
+<div class="book-content">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        //i++;
+        <a href="/Chitiet/ChitietBook?BookId=@item.BookId" style="text-decoration:none;">
+            <div id="sanpham">
+                <div id="anhbia"><img src="~/Images/@item.ImgUrl" /></div>
+                <div id="tensach">@item.Title</div>
+                <div id="tieude">@item.Author.AuthorName</div>
+                <div class="price">
+                    <a class="agia">$@item.Price.00</a><a id="icon"><i class="fa fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </a>
+        @*if(i % 6 == 0 )
+            {
+                <div style="clear:both"></div>
+            }*@
+    }
+</div>
+<div class="special">
+    @*@Html.Partial("~/Views/Home/BookSpecialParialView.cshtml")*@
+    @Html.Action("BookSpecialParialView", "Home")
+</div>

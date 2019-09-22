@@ -1,0 +1,51 @@
+﻿@using BookManage.Models
+@model Book
+@{
+    /**/
+
+    ViewBag.Title = "ChitietBook";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/Detail.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="title" style="font-size:30px; padding:20px 0px">
+    <a style="font-family:Georgia"class="navhead" href="@Url.Action("Home","Home")"> HOME </a> <i style="color:#4e9df7" class="material-icons">navigate_next</i> <a href="@Url.Action("Home","Home")" style="font-family:Georgia" class="navhead">@Model.Title</a>
+    <hr>
+</div>
+<div class="baotrum">
+    <div class="anh"><img src="~/Images/@Model.ImgUrl" /></div>
+    <div class="noidung">
+        <div id="tenbook">@Model.Title</div>
+        <div class="price">
+            $@Model.Price.00
+        </div>
+        <div class="nameauthor">
+            <label for="">Author:   </label><label id="lbNXB" for="" style="font-size:larger"> @Model.Author.AuthorName</label>
+            <label for="">Publisher:   </label><label for="" style="font-size:larger"> @Model.Publisher.Name</label>
+        </div>
+
+        <div class="status">
+            @if (Model.IsActive == "True")
+            {
+                <a id="activetrue">Active</a>
+
+            }
+            else if (Model.IsActive == "False")
+            {
+
+                <a id="activefalse">Cancel</a>
+            }
+        </div>
+        <div id="tieudebook">
+            @Model.Summary
+        </div>
+        <div class="quanty">
+            <label id="quantity">Quantity</label><input type="text" name="1" id="qty" value="@Model.Quantity" disabled="disabled">
+        </div>
+        <div class="buttom">
+            <a href="@Url.Action("Home","Home")" class="btnbottom" id="btn-right">Go To Home</a>
+        </div>
+
+    </div>
+</div>
+
